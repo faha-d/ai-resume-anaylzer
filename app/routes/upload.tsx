@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FileUploader from "~/components/FileUploader";
 import Navbar from "~/components/Navbar";
 
 const Upload = () => {
@@ -6,9 +7,11 @@ const Upload = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('')
 
+    const handleFileSelect
     const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
     };
+
 
 
     return (
@@ -50,9 +53,9 @@ const Upload = () => {
 
                             <div className="form-div">
                                 <label htmlFor="uploader">
-                                    Upload Resume
+                                   Upload Resume
                                 </label>
-                                <div className="uploader"> </div>
+                                <FileUploader/>
                             </div>
 
                             <button className="primary-button" type="submit"> Analyze Resume </button>
