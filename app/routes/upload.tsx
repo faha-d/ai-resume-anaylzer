@@ -6,13 +6,15 @@ const Upload = () => {
 
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('')
+    const [file, setFile] = useState<File | null>(null)
 
-    const handleFileSelect
     const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
     };
 
-
+    const hanldeFileUpload = (file: File | null) => {
+        setFile(file);
+    }
 
     return (
         <main className="bg-[url('/images/bg-main.svg')] bg-cover">
@@ -53,9 +55,9 @@ const Upload = () => {
 
                             <div className="form-div">
                                 <label htmlFor="uploader">
-                                   Upload Resume
+                                    Upload Resume
                                 </label>
-                                <FileUploader/>
+                                <FileUploader onFileSelect={hanldeFileUpload} />
                             </div>
 
                             <button className="primary-button" type="submit"> Analyze Resume </button>

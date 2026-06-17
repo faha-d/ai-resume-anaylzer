@@ -7,12 +7,13 @@ interface FileUploaderProps {
 
 const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
 
-    const [file, setFile] = useState();
     const onDrop = useCallback((acceptedFiles: File[]) => {
-        const file = acceptedFiles[0] || null
+        const file = acceptedFiles[0] || null;
+        onFileSelect?.(file);
+    }, [onFileSelect])
 
-    }, [])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+    const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({ onDrop, multiple: false, accept: { 'application/pdf': ['.pdf'] }, maxSize: 20 * 1024 * 1024 })
+    const file = acceptedFiles[0] || null;
 
     return (
         <div className="w-full gradient-border">
